@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ImageConverter</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="convert">Convert Image</string>
+    <string name="Conversion">Conversion</string>
+    <string name="conversion_failed">Conversion failed</string>
+    <string name="conversion_succeed">Conversion succeed</string>
+    <string name="converting_title">Converting</string>
+    <string name="converting_msg">Converting Image to png</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">Warning</string>
+    <string name="need_permission">Application need permissions to work</string>
+    <string name="request_permission">Request permissions</string>
+</resources>
