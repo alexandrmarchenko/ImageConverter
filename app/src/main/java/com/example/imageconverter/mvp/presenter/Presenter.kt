@@ -1,12 +1,14 @@
 package com.example.imageconverter.mvp.presenter
 
 import android.content.Context
+import android.graphics.Bitmap
 import com.example.imageconverter.mvp.model.entity.Converter
 import com.example.imageconverter.mvp.model.entity.Image
 import com.example.imageconverter.mvp.model.entity.ImageLoader
 import com.example.imageconverter.mvp.view.ImageView
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.functions.Consumer
 import moxy.MvpPresenter
 
 class Presenter(
@@ -47,9 +49,15 @@ class Presenter(
     }
 
     fun loadImage(src: String) {
-        val bitmap = imageLoader.getImage(src)
-        image.bitmap = bitmap
-        viewState.setImage(bitmap)
+        var bitmap: Bitmap? = null
+        imageLoader.loadImage(src)
+            .subscribeOn(computationScheduler)
+            .observeOn(schedulers)
+            .subscribe { t ->
+                image.bitmap = t
+                viewState.setImage(t)
+            }
+
     }
 
     fun stopConverting() {
