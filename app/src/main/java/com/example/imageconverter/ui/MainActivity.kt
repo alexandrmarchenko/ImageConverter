@@ -1,6 +1,5 @@
 package com.example.imageconverter.ui
 
-//import moxy.ktx.moxyPresenter
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
@@ -15,6 +14,8 @@ import android.provider.MediaStore
 import android.view.View
 import androidx.core.app.ActivityCompat
 import com.example.imageconverter.R
+import com.example.imageconverter.mvp.model.imageApi.Converter.Converter
+import com.example.imageconverter.mvp.model.imageApi.Loader.ImageLoader
 import com.example.imageconverter.mvp.presenter.Presenter
 import com.example.imageconverter.mvp.view.ImageView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -43,8 +44,12 @@ class MainActivity : MvpAppCompatActivity(), ImageView {
     @ProvidePresenter
     fun providePresenter(): Presenter {
         return Presenter(
-            this
-            , AndroidSchedulers.mainThread(), Schedulers.computation()
+            AndroidSchedulers.mainThread(),
+            Schedulers.computation(),
+            Converter(
+                this
+            ),
+            ImageLoader(this)
         )
     }
 

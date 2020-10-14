@@ -1,10 +1,11 @@
-package com.example.imageconverter.mvp.model.entity
+package com.example.imageconverter.mvp.model.imageApi.Converter
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
-import com.example.imageconverter.mvp.model.IConverter
+import com.example.imageconverter.mvp.model.entity.Image
+import com.example.imageconverter.mvp.model.imageApi.IConverter
 import io.reactivex.rxjava3.core.Completable
 
 class Converter(private val context: Context) :
